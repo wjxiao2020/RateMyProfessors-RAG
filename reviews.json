@@ -1,0 +1,125 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Sarah Johnson",
+        "subject": "Introduction to Psychology",
+        "stars": 5,
+        "review": "Dr. Johnson is an amazing professor! Her lectures are engaging and she genuinely cares about her students."
+      },
+      {
+        "professor": "Prof. Michael Lee",
+        "subject": "Calculus I",
+        "stars": 3,
+        "review": "The material is tough, but Prof. Lee explains it well. The grading is fair, but the tests are difficult."
+      },
+      {
+        "professor": "Dr. Emily Brown",
+        "subject": "Organic Chemistry",
+        "stars": 4,
+        "review": "Dr. Brown is very knowledgeable, and her labs are well-organized. The course is challenging, but she offers a lot of help."
+      },
+      {
+        "professor": "Prof. John Smith",
+        "subject": "World History",
+        "stars": 2,
+        "review": "Prof. Smith's lectures are dry, and the readings are overwhelming. The exams are also too detailed."
+      },
+      {
+        "professor": "Dr. Alice Wang",
+        "subject": "Data Structures",
+        "stars": 5,
+        "review": "Dr. Wang is the best! Her explanations are clear, and she makes complex topics easy to understand."
+      },
+      {
+        "professor": "Prof. David Martinez",
+        "subject": "Microeconomics",
+        "stars": 3,
+        "review": "Prof. Martinez is decent, but his lectures can be a bit monotonous. The assignments are straightforward though."
+      },
+      {
+        "professor": "Dr. Jane Doe",
+        "subject": "Literary Analysis",
+        "stars": 4,
+        "review": "Dr. Doe is very passionate about literature. She encourages deep thinking and class discussions are always interesting."
+      },
+      {
+        "professor": "Prof. Richard Adams",
+        "subject": "Physics II",
+        "stars": 1,
+        "review": "Prof. Adams is very difficult to follow. His lectures are all over the place and the tests are extremely hard."
+      },
+      {
+        "professor": "Dr. Megan O'Connor",
+        "subject": "Sociology 101",
+        "stars": 5,
+        "review": "Dr. O'Connor is fantastic! She's approachable, and her lectures are thought-provoking."
+      },
+      {
+        "professor": "Prof. Brian Stevens",
+        "subject": "Political Science",
+        "stars": 3,
+        "review": "Prof. Stevens is knowledgeable, but his classes can be dull. The exams are fair, but not easy."
+      },
+      {
+        "professor": "Dr. Patricia Evans",
+        "subject": "Molecular Biology",
+        "stars": 4,
+        "review": "Dr. Evans is very organized and clear. The material is tough, but she provides a lot of support."
+      },
+      {
+        "professor": "Prof. Charles Green",
+        "subject": "Statistics",
+        "stars": 2,
+        "review": "Prof. Green's lectures are confusing, and he doesn't explain concepts well. The textbook is more helpful."
+      },
+      {
+        "professor": "Dr. Laura White",
+        "subject": "Modern Art History",
+        "stars": 5,
+        "review": "Dr. White's passion for art is contagious. Her classes are engaging, and she makes learning enjoyable."
+      },
+      {
+        "professor": "Prof. Robert Harris",
+        "subject": "Computer Networks",
+        "stars": 4,
+        "review": "Prof. Harris knows his stuff. The class is challenging, but you learn a lot if you put in the effort."
+      },
+      {
+        "professor": "Dr. Samantha Taylor",
+        "subject": "Environmental Science",
+        "stars": 3,
+        "review": "Dr. Taylor's class is interesting, but her grading is tough. The projects are informative, though."
+      },
+      {
+        "professor": "Prof. Anthony King",
+        "subject": "Ethics in Technology",
+        "stars": 5,
+        "review": "Prof. King is amazing! He encourages debates and critical thinking. One of the best courses I've taken."
+      },
+      {
+        "professor": "Dr. Linda Roberts",
+        "subject": "Macroeconomics",
+        "stars": 2,
+        "review": "Dr. Roberts is knowledgeable, but her teaching style is too fast-paced. It's hard to keep up."
+      },
+      {
+        "professor": "Prof. George Clark",
+        "subject": "Philosophy of Mind",
+        "stars": 4,
+        "review": "Prof. Clark is a great lecturer. He makes complex ideas accessible, but the readings are heavy."
+      },
+      {
+        "professor": "Dr. Angela Davis",
+        "subject": "Genetics",
+        "stars": 3,
+        "review": "Dr. Davis is good, but her exams are tricky. You really need to study hard to do well."
+      },
+      {
+        "professor": "Prof. William Scott",
+        "subject": "Introduction to Business",
+        "stars": 5,
+        "review": "Prof. Scott's class is incredibly practical. His real-world examples make the course material come alive."
+      }
+    ]
+  }
+  
