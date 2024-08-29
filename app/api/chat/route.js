@@ -1,27 +1,26 @@
 import { NextResponse } from "next/server";
 import { Pinecone } from "@pinecone-database/pinecone";
 import OpenAI from "openai";
+import { HfInference } from "@huggingface/inference";
 
 const systemPrompt = `
-You are a Rate My Professors assistant designed to help students find the best professors based on their queries. Your task is to provide the top 3 professors that best match the user’s request using Retrieval-Augmented Generation (RAG) methods. Each response should be clear, concise, and focused on delivering the most relevant information to the user.
+You are a Rate My Professors assistant designed to help students find the best professors based on their queries. 
+Your task is to provide the top professors that best match the user’s request using information provided. Each response should be clear, concise, and focused on delivering the most relevant information to the user.
 
 Guidelines:
 
-Understand the Query:
 Carefully read the user’s question to determine the specific criteria they are interested in (e.g., subject expertise, teaching style, difficulty level, etc.).
-Retrieve Relevant Information:
-Use the RAG framework to search for and retrieve the most relevant information about professors from a database or knowledge base.
-Focus on finding professors who are highly rated and meet the criteria specified by the user.
-Generate the Response:
-Provide a list of the top 3 professors that best match the user’s query.
-For each professor, include the following details:
+The information of the top 3 professors with matching description will be given as context to you.
+For each professor, determine if the professor has a matching department or a subject if the user have specified any. 
+If the user specified a department or a subject, then don't give those professors that doesn't match the given department or subject. 
+Include the following sections in your detailed explaination of why they are a good choice for the user:
 Name: The full name of the professor.
 Department/Course: The primary department or course they teach.
 Key Highlights: A brief summary of why they are highly rated or recommended (e.g., teaching style, expertise, student feedback).
-Ensure Clarity:
+
 Make sure the response is easy to understand and provides actionable information.
 Avoid jargon and ensure that each professor’s highlights are relevant to the user’s query.
-Provide the information in HTML format
+You must reply in HTML format. Use <h1> to <h6> tag for each professor's name or the section header. Use line breaks after each section (Name, Department/Course, Key Highlights) of your explaination to make the answer easily readable.
 `
 
 // Example Interaction:
@@ -41,30 +40,37 @@ Provide the information in HTML format
 // Key Highlights: Acclaimed for her engaging discussions and real-world applications of psychological theories. Students appreciate her dedication and enthusiasm.
 // Remember: Tailor the response to the specific details of each query to ensure relevance and usefulness.
 
+const hf = new HfInference(process.env.HF_TOKEN)
+
 export async function POST(req) {
     const data = await req.json()
+    console.log("\nPOST data: ")
+    console.log(data)
     const pc = new Pinecone({
         apiKey: process.env.PINECONE_API_KEY,
     })
     const index = pc.index('rag').namespace('ns1')
-    const openai = new OpenAI()
+    const openai = new OpenAI({
+        baseURL: "https://openrouter.ai/api/v1",
+        apiKey: process.env.OPENROUTER_API_KEY,
+    })
 
     // get user's last message
     const lastMessage = data[data.length - 1]
     const lastMessageContent = lastMessage.content 
-    const embedding = await openai.embeddings.create({
-        model: 'text-embedding-3-small',
-        input: lastMessageContent,
-        encoding_format: 'float'
+    const embedding = await hf.featureExtraction({
+        model: 'WhereIsAI/UAE-Large-V1',
+        inputs: lastMessageContent
     })
 
     const results = await index.query({
         topK: 3,
         includeMetadata: true,
-        vector: embedding.data[0].embedding
+        vector: embedding
     })
 
-    let resultString = '\n\nReturned results from vector DB (done automatically):'
+    // Returned results from vector DB (done automatically)
+    let resultString = '\n\nTop-Matching Professors:'
     results.matches.forEach((match) => {
         resultString += `\n
         Professor: ${match.id}
@@ -83,7 +89,7 @@ export async function POST(req) {
             ...dataWithoutLastMessage,
             {role: 'user', content: newLastMessage}
         ],
-        model: '',
+        model: "meta-llama/llama-3.1-8b-instruct:free",
         stream: true
     })
 
